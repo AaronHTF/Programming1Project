@@ -19,6 +19,14 @@ public class Assignment {
     private ArrayList<Integer> scores;
     private static int nextId = 1;
 
+    public Assignment(String assignmentName, double weight, int maxScore) {
+        this.assignmentId = "" + nextId++;
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+        this.maxScore = maxScore;
+        this.scores = new ArrayList<>();
+    }
+
     public void calcAssignmentAvg() {
         int sum = 0;
 
