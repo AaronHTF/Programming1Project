@@ -23,8 +23,7 @@ public class Address {
             this.street = street;
             this.city = city;
             this.province = province;
-            this.postalCode = postalCode;
-            //TODO set postal code characters to uppercase
+            this.postalCode = postalCode.toUpperCase();
             this.country = country;
         } else {
             this.streetNo = 0;
@@ -37,7 +36,52 @@ public class Address {
     }
 
     public static boolean isPostalCodeValid(String postalCode) {
+        if (postalCode.length() != 6 && postalCode.length() != 7) {
+            return false;
+        }
+
+        String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String numbers = "1234567890";
+
+        if (postalCode.length() == 6) {
+            for (int i = 0; i < postalCode.length(); i++) {
+                char c = postalCode.charAt(i);
+                if (i % 2 == 0) {
+                    if (!letters.contains(c + "")) {
+                        return false;
+                    }
+                }
+                if (i % 2 != 0) {
+                    if (!numbers.contains(c + "")) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        if (postalCode.length() == 7) {
+            for (int i = 0; i < postalCode.length(); i++) {
+                char c = postalCode.charAt(i);
+                switch (i) {
+                    case 0, 2, 5 -> {
+                        if (!letters.contains(c + "")) {
+                            return false;
+                        }
+                    }
+                    case 1, 4, 6 -> {
+                        if (!numbers.contains(c + "")) {
+                            return false;
+                        }
+                    }
+                    case 3 -> {
+                        if (c != ' ') {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
         return true;
-        //TODO complete this method body
     }
 }
