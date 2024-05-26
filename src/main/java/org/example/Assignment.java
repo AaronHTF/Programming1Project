@@ -10,4 +10,6 @@ public class Assignment {
     private double assignmentAverage;
     private ArrayList<Integer> scores;
     private static int nextId = 1;
+
+    //TODO add the rest of the methods
 }
