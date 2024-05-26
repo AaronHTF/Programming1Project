@@ -84,5 +84,17 @@ public class Course {
         }
     }
 
+    public String toSimplifiedString() {
+        return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s",
+                courseId, courseName, credits, department);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s, Assignments: %s, Registered Students: %s",
+                courseId, courseName, credits, department, assignments, students);
+        //TODO finish this method body
+    }
+
     //TODO add the rest of the methods
 }
