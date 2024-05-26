@@ -49,5 +49,16 @@ public class Student {
         return false;
     }
 
+    public String toSimplifiedString() {
+        return String.format("Student ID: %s, Student Name: %s, Department: %s", studentId, studentName, department);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Student ID: %s, Student Name: %s, Gender: %s, Address: %s, Department: %s, " +
+                "Registered Courses: %s", studentId, studentName, gender, address, department, registeredCourses);
+        //TODO need to finish method body
+    }
+
     //TODO add the rest of the methods
 }
