@@ -1,8 +1,14 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.function.DoubleFunction;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Student {
     private String studentId;
     private String studentName;
@@ -33,4 +39,6 @@ public class Student {
         System.out.printf("%s is not registered.\n", course.getName());
         return false;
     }
+
+    //TODO add the rest of the methods
 }
