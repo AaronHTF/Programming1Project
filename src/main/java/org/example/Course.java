@@ -19,5 +19,15 @@ public class Course {
     private ArrayList<Double> finalScores;
     private static int nextId = 1;
 
+    public boolean isAssignmentWeightValid() {
+        double sum = 0;
+
+        for (Assignment assignment : assignments) {
+            sum += assignment.getWeight();
+        }
+
+        return sum == 1.0;
+    }
+
     //TODO add the rest of the methods
 }
