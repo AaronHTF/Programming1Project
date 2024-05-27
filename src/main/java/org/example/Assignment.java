@@ -24,6 +24,7 @@ public class Assignment {
         this.assignmentName = assignmentName;
         this.weight = weight;
         this.maxScore = maxScore;
+        calcAssignmentAvg();
         this.scores = new ArrayList<>();
     }
 
