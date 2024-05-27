@@ -1,19 +1,42 @@
 package org.example;
 
-import lombok.NonNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@ToString
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Department {
     private String departmentId;
     private String departmentName;
     private static int nextId = 1;
 
     public Department(String departmentName) {
-        this.departmentId = String.format("D%02d", nextId++);
-        this.departmentName = departmentName;
+        if (validateDepartmentName(departmentName)) {
+            this.departmentId = String.format("D%02d", nextId++);
+            this.departmentName = departmentName;
+        } else {
+            this.departmentName = null;
+        }
     }
 
     public boolean validateDepartmentName(String departmentName) {
+        if (departmentName == null || departmentName.isEmpty()) {
+            return false;
+        }
+
+        String validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+
+        for (int i = 0; i < departmentName.length(); i++) {
+            char c = departmentName.charAt(i);
+            if (!validCharacters.contains(c + "")) {
+                return false;
+            }
+        }
+
         return true;
-        //TODO complete this method body
     }
 }

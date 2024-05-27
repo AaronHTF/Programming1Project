@@ -86,13 +86,13 @@ public class Course {
 
     public String toSimplifiedString() {
         return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s",
-                courseId, courseName, credits, department);
+                courseId, courseName, credits, department.getDepartmentName());
     }
 
     @Override
     public String toString() {
         return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s, Assignments: %s, Registered Students: %s",
-                courseId, courseName, credits, department, assignments, students);
+                courseId, courseName, credits, department.getDepartmentName(), assignments, students);
         //TODO finish this method body
     }
 
