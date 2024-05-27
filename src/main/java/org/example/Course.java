@@ -19,6 +19,10 @@ public class Course {
     private ArrayList<Double> finalScores;
     private static int nextId = 1;
 
+    /**
+     * check if the sum of the weight of all the assignments equals to 1
+     * @return true if the sum of the weight is equal to 1 and false if not
+     */
     public boolean isAssignmentWeightValid() {
         double sum = 0;
 
@@ -29,6 +33,12 @@ public class Course {
         return sum == 1.0;
     }
 
+    /**
+     * registers a student. Add a student to the course's registered students list and add the course to the student's
+     * registered courses list
+     * @param student the input student
+     * @return true if the student has been registered and false if the student had already been registered
+     */
     public boolean registerStudent(Student student) {
         if (students.contains(student)) {
             System.out.printf("%s has already been registered.\n", student.getStudentName());
@@ -45,20 +55,30 @@ public class Course {
         return true;
     }
 
-    public double[] calcStudentsAverage() {
-        double[] studentAverages = new double[students.size()];
+    /**
+     * calculates the weighted average score for a student
+     * @param student the input student
+     * @return the weight average
+     */
+    public double calcStudentsAverage(Student student) {
+        int idx = students.indexOf(student);
 
-        for (int i = 0; i < studentAverages.length; i++) {
-            double avg = 0;
-            for (Assignment assignment : assignments) {
-                avg += assignment.getScores().get(i) * assignment.getWeight();
-            }
-            studentAverages[i] = avg;
+        double avg = 0;
+
+        for (Assignment assignment : assignments) {
+            avg += assignment.getScores().get(idx) * assignment.getWeight();
         }
 
-        return studentAverages;
+        return avg;
     }
 
+    /**
+     * adds a new assignment to the course
+     * @param assignmentName the assignment name
+     * @param weight the weight of the assignment
+     * @param maxScore the max score of the assignment
+     * @return true if the assignment has been created and false if the assignment already existed
+     */
     public boolean addAssignment(String assignmentName, double weight, int maxScore) {
         for (Assignment assignment : assignments) {
             if (assignment.getAssignmentName().equals(assignmentName)) {
@@ -72,20 +92,32 @@ public class Course {
         return true;
     }
 
+    /**
+     * generates a random scores for each assignment and student and calculate the final score of each student
+     */
     public void generateScores() {
         for (Assignment assignment : assignments) {
             assignment.generateRandomScore();
         }
 
-        double[] studentAverages = calcStudentsAverage();
-
-        for (int i = 0; i < studentAverages.length; i++) {
-            finalScores.add(i, studentAverages[i]);
+        for (int i = 0; i < students.size(); i++) {
+            finalScores.set(i, calcStudentsAverage(students.get(i)));
         }
+     }
+
+    /**
+     * displays the scores of a course in a table
+     */
+    public void displayScore() {
+
     }
 
+    /**
+     * converts a course to a simple string containing the course ID, course name, credits and department
+     * @return the simplified course string
+     */
     public String toSimplifiedString() {
-        return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s",
+        return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s\n",
                 courseId, courseName, credits, department.getDepartmentName());
     }
 

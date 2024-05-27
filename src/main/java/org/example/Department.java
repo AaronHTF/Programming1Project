@@ -23,6 +23,11 @@ public class Department {
         }
     }
 
+    /**
+     * checks if a department name is valid. The name can only contain letters and spaces
+     * @param departmentName the input department name
+     * @return true if the department name is valid and false if not
+     */
     public boolean validateDepartmentName(String departmentName) {
         if (departmentName == null || departmentName.isEmpty()) {
             return false;

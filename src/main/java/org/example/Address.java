@@ -35,6 +35,12 @@ public class Address {
         }
     }
 
+    /**
+     * check if a postal code is valid. The length of a postal code has to be of 6 or 7
+     * and has to respect the proper format
+     * @param postalCode the input postal code
+     * @return true if the postal code is valid and false if not
+     */
     public static boolean isPostalCodeValid(String postalCode) {
         if (postalCode.length() != 6 && postalCode.length() != 7) {
             return false;

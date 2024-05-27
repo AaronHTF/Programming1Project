@@ -1,6 +1,12 @@
 package util;
 
 public class Util {
+
+    /**
+     * converts a string containing 2 words to title case
+     * @param strIn the in put string
+     * @return the string in title case
+     */
     public String toTitleCase(String strIn) {
         if (strIn == null || strIn.isEmpty()) {
             return strIn;
