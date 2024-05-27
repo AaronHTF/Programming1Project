@@ -19,6 +19,16 @@ public class Course {
     private ArrayList<Double> finalScores;
     private static int nextId = 1;
 
+    public Course(String courseName, double credits, Department department) {
+        this.courseId = String.format("C-%s-%02d", department.getDepartmentId(), nextId++);
+        this.courseName = courseName;
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.students = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
+    }
+
     /**
      * check if the sum of the weight of all the assignments equals to 1
      * @return true if the sum of the weight is equal to 1 and false if not
