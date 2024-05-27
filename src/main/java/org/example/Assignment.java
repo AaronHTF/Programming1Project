@@ -56,11 +56,18 @@ public class Assignment {
                 case 9, 10 -> scores.set(i, rand.nextInt(90, 100));
             }
         }
+
+        calcAssignmentAvg();
     }
 
     @Override
     public String toString() {
         return String.format("Assignment ID: %s, Assignment Name: %s, Weight: %f, maxScore: %d",
                 assignmentId, assignmentName, weight, maxScore);
+    }
+
+    public ArrayList<Integer> getScores() {
+        calcAssignmentAvg();
+        return scores;
     }
 }
