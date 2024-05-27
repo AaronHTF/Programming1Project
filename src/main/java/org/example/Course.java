@@ -119,7 +119,30 @@ public class Course {
      * displays the scores of a course in a table
      */
     public void displayScore() {
+        System.out.printf("Course: %s(%s)\n", courseName, courseId);
 
+        for (Assignment assignment : assignments) {
+            System.out.print(assignment.getAssignmentName() + "  ");
+        }
+
+        System.out.println("Final Score");
+
+        for (Student student : students) {
+            String scores = "";
+
+            for (Assignment assignment : assignments) {
+                scores += "    " + assignment.getScores().get(students.indexOf(student));
+            }
+
+            System.out.println(student.getStudentName() + scores + calcStudentsAverage(student));
+        }
+
+        String avg = "";
+        for (Assignment assignment : assignments) {
+            avg += "    " + assignment.getAssignmentAverage();
+        }
+
+        System.out.println("\nAverage" + avg);
     }
 
     /**
