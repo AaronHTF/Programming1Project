@@ -91,10 +91,13 @@ public class Course {
 
     @Override
     public String toString() {
-        return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s, Assignments: %s, Registered Students: %s",
-                courseId, courseName, credits, department.getDepartmentName(), assignments, students);
-        //TODO finish this method body
-    }
+        String studentString = "";
 
-    //TODO add the rest of the methods
+        for (Student student : students) {
+            studentString += student.toSimplifiedString();
+        }
+
+        return String.format("Course ID: %s, Course Name: %s, Credits: %f, Department: %s, Assignments: %s, Registered Students: %s",
+                courseId, courseName, credits, department.getDepartmentName(), assignments, studentString);
+    }
 }

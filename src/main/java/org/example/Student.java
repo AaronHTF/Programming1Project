@@ -50,15 +50,19 @@ public class Student {
     }
 
     public String toSimplifiedString() {
-        return String.format("Student ID: %s, Student Name: %s, Department: %s", studentId, studentName, department);
+        return String.format("Student ID: %s, Student Name: %s, Department: %s\n",
+                studentId, studentName, department.getDepartmentName());
     }
 
     @Override
     public String toString() {
-        return String.format("Student ID: %s, Student Name: %s, Gender: %s, Address: %s, Department: %s, " +
-                "Registered Courses: %s", studentId, studentName, gender, address, department, registeredCourses);
-        //TODO need to finish method body
-    }
+        String courseString = "";
 
-    //TODO add the rest of the methods
+        for (Course course : registeredCourses) {
+            courseString += course.toSimplifiedString();
+        }
+
+        return String.format("Student ID: %s, Student Name: %s, Gender: %s, Address: %s, Department: %s, " +
+                "Registered Courses: %s", studentId, studentName, gender, address, department, courseString);
+    }
 }
